@@ -1,163 +1,45 @@
-/*
 package org.academiadecodigo.bootcamp.controller;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import Navigation;
-import org.academiadecodigo.bootcamp.model.User;
-import ServiceRegistry;
-import org.academiadecodigo.bootcamp.service.user.UserService;
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ResourceBundle;
+import javafx.scene.image.ImageView;
 
-*/
 /**
- * Created by codecadet on 07/03/2017.
- *//*
+ * Created by codecadet on 20/03/17.
+ */
 
-public class LoginController implements Initializable {
+public class LoginController {
 
-    String username;
-    String password;
-    String email;
+    @FXML // ResourceBundle that was given to the FXMLLoader
+    private ResourceBundle resources;
 
+    @FXML // URL location of the FXML file that was given to the FXMLLoader
+    private URL location;
 
-    private boolean justRegistered = false;
+    @FXML // fx:id="fundao"
+    private ImageView fundao; // Value injected by FXMLLoader
 
-    private UserService userService;
+    @FXML // fx:id="logIn"
+    private Button logIn; // Value injected by FXMLLoader
 
-    @FXML
-    private TextField textUserName;
-
-    @FXML
-    private TextField textEmail;
-
-    @FXML
-    private TextField textPassword;
+    @FXML // fx:id="register"
+    private Hyperlink register; // Value injected by FXMLLoader
 
     @FXML
-    private Label emailAsk;
-
-    @FXML
-    private Button buttonLogin;
-
-    @FXML
-    private Hyperlink registerButton;
-
-    @FXML
-    private Label wrongPassword;
-
-    @FXML
-    private Button buttonRegisterAndLog;
-
-    @FXML
-    private Label userIsTaken;
-
-    @FXML
-    private Label welcome;
-    @FXML
-    private Label passwordField;
-
-    @FXML
-    private Label getRegistered;
-
-
-    @FXML
-    private Label userField;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        assert textUserName != null : "fx:id=\"textUserName\" was not injected: check your FXML file 'login.fxml'.";
-        assert textEmail != null : "fx:id=\"textEmail\" was not injected: check your FXML file 'login.fxml'.";
-        assert textPassword != null : "fx:id=\"textPassword\" was not injected: check your FXML file 'login.fxml'.";
-        assert passwordField != null : "fx:id=\"passwordField\" was not injected: check your FXML file 'login.fxml'.";
-        assert userField != null : "fx:id=\"userField\" was not injected: check your FXML file 'login.fxml'.";
-        assert emailAsk != null : "fx:id=\"emailAsk\" was not injected: check your FXML file 'login.fxml'.";
-        assert wrongPassword != null : "fx:id=\"wrongPassword\" was not injected: check your FXML file 'login.fxml'.";
-        assert welcome != null : "fx:id=\"welcome\" was not injected: check your FXML file 'login.fxml'.";
-        assert registerButton != null : "fx:id=\"registerButton\" was not injected: check your FXML file 'login.fxml'.";
-        assert buttonRegisterAndLog != null : "fx:id=\"buttonRegisterAndLog\" was not injected: check your FXML file 'login.fxml'.";
-        assert getRegistered != null : "fx:id=\"getRegistered\" was not injected: check your FXML file 'login.fxml'.";
-        assert userIsTaken != null : "fx:id=\"userIsTaken\" was not injected: check your FXML file 'login.fxml'.";
-
-        userService = (UserService) ServiceRegistry.getInstance().getService("jdbc");
-    }
-
-    public void onLogin(ActionEvent actionEvent) throws SQLException {
-
-        buttonRegisterAndLog = (Button) actionEvent.getSource();
-
-        username = textUserName.getText();
-        password = textPassword.getText();
-        email = textEmail.getText();
-
-        if (justRegistered) {
-            if (userService.findByName(username) == null && !password.isEmpty() && !username.isEmpty()) {
-                System.out.println("user not taken");
-                newClient(username, password, email);
-                secondScreen();
-
-
-            } else if (userService.findByName(username) != null)
-                System.out.println("User is taken");
-                userIsTaken.setVisible(true);
-
-        } else {
-
-            if (userService.authenticate(username, password)) {
-                secondScreen();
-
-            } else {
-                System.out.println("Wrong Password");
-                wrongPassword.setVisible(true);
-            }
-        }
+    void buttonHandler(ActionEvent event) {
 
     }
 
-    private void secondScreen() {
-        textUserName.setVisible(true);
-        textPassword.setVisible(true);
-        userField.setVisible(true);
-        passwordField.setVisible(true);
-        buttonRegisterAndLog.setText("Login");
-        textPassword.setText("");
-        registerButton.setVisible(true);
-        textEmail.setVisible(false);
-        emailAsk.setVisible(false);
-        wrongPassword.setVisible(false);
-        welcome.setVisible(false);
-        userIsTaken.setText("");
-        Navigation.getInstance().loadScreen("logout");
-    }
+    @FXML // This method is called by the FXMLLoader when initialization is complete
+    void initialize() {
+        assert fundao != null : "fx:id=\"fundao\" was not injected: check your FXML file 'login_view.fxml'.";
+        assert logIn != null : "fx:id=\"logIn\" was not injected: check your FXML file 'login_view.fxml'.";
+        assert register != null : "fx:id=\"register\" was not injected: check your FXML file 'login_view.fxml'.";
 
-    private void newClient(String username, String password, String email) throws SQLException {
-        User user = new User(username, password, email);
-        userService.addUser(user);
-        justRegistered = false;
-
-    }
-
-
-    public void onRegister(MouseEvent mouseEvent) {
-
-        registerButton = (Hyperlink) mouseEvent.getSource();
-        registerButton.setVisible(false);
-        emailAsk.setVisible(true);
-        textEmail.setVisible(true);
-        buttonRegisterAndLog.setText("Register and Login!");
-        justRegistered = true;
-    }
-
-
-    public void setUserService(UserService userService) {
-        this.userService = userService;
     }
 }
-*/
+
