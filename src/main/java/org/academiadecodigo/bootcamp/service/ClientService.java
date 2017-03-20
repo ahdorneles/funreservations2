@@ -1,9 +1,9 @@
 package org.academiadecodigo.bootcamp.service;
 
 
-import org.academiadecodigo.bootcamp.model.client.Client;
 import org.academiadecodigo.bootcamp.model.facility.Facility;
 import org.academiadecodigo.bootcamp.model.facility.FacilityType;
+import org.academiadecodigo.bootcamp.model.client.Client;
 
 import java.io.BufferedReader;
 import java.io.IOException;
