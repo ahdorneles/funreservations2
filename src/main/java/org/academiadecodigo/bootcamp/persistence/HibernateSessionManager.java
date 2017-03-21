@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.persistence;
 
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
