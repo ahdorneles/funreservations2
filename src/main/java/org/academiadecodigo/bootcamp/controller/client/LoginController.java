@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.controller;
+package org.academiadecodigo.bootcamp.controller.client;
 
 import java.net.URL;
 import java.util.ResourceBundle;
