@@ -22,7 +22,7 @@ public class HibernateSessionManager {
                     .configure("hibernate.cfg.xml") // Load settings from hibernate.cfg.xml
                     .build();
 
-            SessionFactory sessionFactory = new MetadataSources(serviceRegistry)
+            sessionFactory = new MetadataSources(serviceRegistry)
                     .buildMetadata() // Tell Hibernate about sources of metadata (database mappings)
                     .buildSessionFactory();
 
