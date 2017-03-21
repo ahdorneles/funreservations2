@@ -3,7 +3,6 @@
 .idea/*
 */*.idea/*
 */out/*
-*.xml
 *.iml
 
 
@@ -176,7 +175,6 @@ $RECYCLE.BIN/
 # User-specific stuff:
 .idea/workspace.xml
 .idea/tasks.xml
-*/*.xml
 
 # Sensitive or high-churn files:
 .idea/dataSources/
